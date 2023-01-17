@@ -89,6 +89,7 @@ namespace Scissors
 
                 if (ïðÿìîóãîëüíèêToolStripMenuItem.Checked)
                 {
+                    this.WindowState = FormWindowState.Normal;
                     Form2 photoShowing = new Form2();
                     photoShowing.ShowDialog();
                 }
@@ -113,12 +114,16 @@ namespace Scissors
                         this.Size = new Size(685, 450);
                     }
                     //(left, up, right, down)
-                    pictureBox1.Margin = new Padding((this.Size.Width - pictureBox1.Size.Width) / 2, (this.Size.Height - pictureBox1.Size.Height) / 2, (this.Size.Width - pictureBox1.Size.Width) / 2, (this.Size.Height - pictureBox1.Size.Height) / 2);
+                    //Padding = new Padding((this.Size.Width - pictureBox1.Size.Width) / 2, (this.Size.Height - pictureBox1.Size.Height) / 2, (this.Size.Width - pictureBox1.Size.Width) / 2, (this.Size.Height - pictureBox1.Size.Height) / 2);
                 }
-
+                else
+                {
+                    this.Size = Screen.PrimaryScreen.Bounds.Size;
+                    this.WindowState = FormWindowState.Maximized;
+                }
                 pictureBox1.Size = new Size(Form2.width, Form2.height);
-                pictureBox1.Padding = new Padding(0);
-                pictureBox1.Margin = new Padding(3);
+                panelForPictureBox.Padding = new Padding(0);
+                //pictureBox1.Margin = new Padding(3);
 
                 pictureBox1.Image = img;
                 pictureBox1.Visible = true;
@@ -154,8 +159,9 @@ namespace Scissors
                 menuStrip1.Visible = false;
                 pictureBox1.Visible = false;
                 img.Dispose();
-                pictureBox1.Margin = new Padding(3);
+                panelForPictureBox.Padding = new Padding(3);
                 pictureBox1.Size = new Size(584, 242);
+                this.WindowState = FormWindowState.Normal;
                 this.Size = new Size(Width = 600, Height = 325);
                 //panel2.Visible = true;
                 SaveButton.Visible = false;

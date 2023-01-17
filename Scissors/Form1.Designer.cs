@@ -80,12 +80,12 @@
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.настроитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.EraserButton = new System.Windows.Forms.ToolStripButton();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelForPictureBox = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panelForPictureBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -284,14 +284,14 @@
             this.прямоугольникToolStripMenuItem.Checked = true;
             this.прямоугольникToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.прямоугольникToolStripMenuItem.Name = "прямоугольникToolStripMenuItem";
-            this.прямоугольникToolStripMenuItem.Size = new System.Drawing.Size(188, 24);
+            this.прямоугольникToolStripMenuItem.Size = new System.Drawing.Size(172, 24);
             this.прямоугольникToolStripMenuItem.Text = "Прямоугольник";
             this.прямоугольникToolStripMenuItem.Click += new System.EventHandler(this.прямоугольникToolStripMenuItem_Click);
             // 
             // окноToolStripMenuItem
             // 
             this.окноToolStripMenuItem.Name = "окноToolStripMenuItem";
-            this.окноToolStripMenuItem.Size = new System.Drawing.Size(188, 24);
+            this.окноToolStripMenuItem.Size = new System.Drawing.Size(172, 24);
             this.окноToolStripMenuItem.Text = "Весь экран";
             this.окноToolStripMenuItem.Click += new System.EventHandler(this.окноToolStripMenuItem_Click);
             // 
@@ -317,42 +317,42 @@
             this.безЗадержкиToolStripMenuItem.Checked = true;
             this.безЗадержкиToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.безЗадержкиToolStripMenuItem.Name = "безЗадержкиToolStripMenuItem";
-            this.безЗадержкиToolStripMenuItem.Size = new System.Drawing.Size(188, 24);
+            this.безЗадержкиToolStripMenuItem.Size = new System.Drawing.Size(159, 24);
             this.безЗадержкиToolStripMenuItem.Text = "Без задержки";
             this.безЗадержкиToolStripMenuItem.Click += new System.EventHandler(this.безЗадержкиToolStripMenuItem_Click);
             // 
             // OneSecToolStripMenuItem
             // 
             this.OneSecToolStripMenuItem.Name = "OneSecToolStripMenuItem";
-            this.OneSecToolStripMenuItem.Size = new System.Drawing.Size(188, 24);
+            this.OneSecToolStripMenuItem.Size = new System.Drawing.Size(159, 24);
             this.OneSecToolStripMenuItem.Text = "1 секунда";
             this.OneSecToolStripMenuItem.Click += new System.EventHandler(this.OneSecToolStripMenuItem_Click_1);
             // 
             // TwoSecToolStripMenuItem
             // 
             this.TwoSecToolStripMenuItem.Name = "TwoSecToolStripMenuItem";
-            this.TwoSecToolStripMenuItem.Size = new System.Drawing.Size(188, 24);
+            this.TwoSecToolStripMenuItem.Size = new System.Drawing.Size(159, 24);
             this.TwoSecToolStripMenuItem.Text = "2 секунды";
             this.TwoSecToolStripMenuItem.Click += new System.EventHandler(this.TwoSecToolStripMenuItem_Click);
             // 
             // ThreeSecToolStripMenuItem1
             // 
             this.ThreeSecToolStripMenuItem1.Name = "ThreeSecToolStripMenuItem1";
-            this.ThreeSecToolStripMenuItem1.Size = new System.Drawing.Size(188, 24);
+            this.ThreeSecToolStripMenuItem1.Size = new System.Drawing.Size(159, 24);
             this.ThreeSecToolStripMenuItem1.Text = "3 секунды";
             this.ThreeSecToolStripMenuItem1.Click += new System.EventHandler(this.ThreeSecToolStripMenuItem1_Click);
             // 
             // FourSecToolStripMenuItem2
             // 
             this.FourSecToolStripMenuItem2.Name = "FourSecToolStripMenuItem2";
-            this.FourSecToolStripMenuItem2.Size = new System.Drawing.Size(188, 24);
+            this.FourSecToolStripMenuItem2.Size = new System.Drawing.Size(159, 24);
             this.FourSecToolStripMenuItem2.Text = "4 секунды";
             this.FourSecToolStripMenuItem2.Click += new System.EventHandler(this.FourSecToolStripMenuItem2_Click);
             // 
             // FiveSecToolStripMenuItem
             // 
             this.FiveSecToolStripMenuItem.Name = "FiveSecToolStripMenuItem";
-            this.FiveSecToolStripMenuItem.Size = new System.Drawing.Size(188, 24);
+            this.FiveSecToolStripMenuItem.Size = new System.Drawing.Size(159, 24);
             this.FiveSecToolStripMenuItem.Text = "5 секунд";
             this.FiveSecToolStripMenuItem.Click += new System.EventHandler(this.FiveSecToolStripMenuItem_Click);
             // 
@@ -569,24 +569,24 @@
             this.EraserButton.Visible = false;
             this.EraserButton.Click += new System.EventHandler(this.EraserButton_Click);
             // 
-            // panel1
+            // panelForPictureBox
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 43);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(584, 242);
-            this.panel1.TabIndex = 2;
+            this.panelForPictureBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panelForPictureBox.Controls.Add(this.pictureBox1);
+            this.panelForPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelForPictureBox.Location = new System.Drawing.Point(0, 43);
+            this.panelForPictureBox.Name = "panelForPictureBox";
+            this.panelForPictureBox.Padding = new System.Windows.Forms.Padding(10);
+            this.panelForPictureBox.Size = new System.Drawing.Size(584, 242);
+            this.panelForPictureBox.TabIndex = 2;
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.Window;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(584, 242);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.Size = new System.Drawing.Size(564, 222);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Visible = false;
@@ -603,7 +603,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 285);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelForPictureBox);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -617,8 +617,7 @@
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelForPictureBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -653,7 +652,7 @@
         private ToolStripButton ScanQRButton;
         private ToolStripSeparator toolStripSeparator4;
         private ToolStripButton EraserButton;
-        private Panel panel1;
+        private Panel panelForPictureBox;
         private PictureBox pictureBox1;
         private SaveFileDialog saveFileDialog1;
         private ToolStripDropDownButton ModeButton;
