@@ -13,7 +13,7 @@ namespace Scissors
     public partial class Form2 : Form
     {
 
-        Point start, end, now;
+        public static Point start, end, now;
         public static int width;
         public static int height;
         private bool isLMB = false;

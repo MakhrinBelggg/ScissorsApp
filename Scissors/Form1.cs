@@ -81,49 +81,82 @@ namespace Scissors
             try
             {
                 this.Opacity = 0;
+
+                panelForPictureBox.Padding = new Padding(0);
+                pictureBox1.Size = new Size(584, 242);
+                panelForPictureBox.Size = new Size(584, 242);
+                this.MinimumSize = new Size(685, 325);
+                this.Size = new Size(685, 325);
+                
                 img = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
 
                 Graphics g = Graphics.FromImage(img as Image);
+                Thread.Sleep(50);
                 Thread.Sleep(timer * 1000);
                 g.CopyFromScreen(0, 0, 0, 0, img.Size);
 
                 if (ÔˇÏÓÛ„ÓÎ¸ÌËÍToolStripMenuItem.Checked)
                 {
-                    this.WindowState = FormWindowState.Normal;
+                    this.WindowState = FormWindowState.Normal;                  
                     Form2 photoShowing = new Form2();
-                    photoShowing.ShowDialog();
+                    photoShowing.ShowDialog();                   
                 }
 
-                //this.Size = new Size(Form2.width + 92, Form2.height + 160);
-                if(img.Size != Screen.PrimaryScreen.Bounds.Size)
+                if(Form2.start.Y < Form2.end.Y) // start point highter then end point
                 {
-                    if (Form2.width > 685)
+                    if (Form2.start.X < Form2.end.X) // start point righter then end point
                     {
-                        if (Form2.height > 450)
-                        {
-                            this.Size = new Size(685 + (Form2.width - 685), 450 + (Form2.height - 450));
-                        }
-                        this.Size = new Size(685 + (Form2.width - 700), 450);
-                    }
-                    else if (Form2.height > 450)
-                    {
-                        this.Size = new Size(685, 450 + (Form2.height - 450));
+                        this.Location = new Point(Form2.start.X - 9, Form2.start.Y - 101);                            
                     }
                     else
                     {
-                        this.Size = new Size(685, 450);
+                         this.Location = new Point(Form2.end.X - 9, Form2.start.Y - 101);                    
                     }
+                }
+                else 
+                {
+                    if (Form2.start.X < Form2.end.X)
+                    {                       
+                         this.Location = new Point(Form2.start.X - 9, Form2.end.Y - 101);
+                    }
+                    else
+                    {
+                        this.Location = new Point(Form2.end.X - 9, Form2.end.Y - 101);                                  
+                    }                
+                }
+                
+                //this.Size = new Size(Form2.width + 92, Form2.height + 160);
+                
+                if (img.Size != Screen.PrimaryScreen.Bounds.Size)
+                {
+                    //if (Form2.width > 685)
+                    //{
+                    //    if (Form2.height > 450)
+                    //    {
+                    //        this.Size = new Size(685 + Form2.width, 450 + Form2.height);
+                    //    }
+                    //    this.Size = new Size(685 + Form2.width, 450);
+                    //}
+                    //else if (Form2.height > 450)
+                    //{
+                    //    this.Size = new Size(685, 450 + Form2.height);
+                    //}
+                    //else
+                    //{
+                    //    this.Size = new Size(685, 450);
+                    //}
                     //(left, up, right, down)
                     //Padding = new Padding((this.Size.Width - pictureBox1.Size.Width) / 2, (this.Size.Height - pictureBox1.Size.Height) / 2, (this.Size.Width - pictureBox1.Size.Width) / 2, (this.Size.Height - pictureBox1.Size.Height) / 2);
+                    //panelForPictureBox.Padding = new Padding((panelForPictureBox.Size.Width - Form2.width) / 2, (panelForPictureBox.Size.Height - Form2.height)/2, 0, 0);
                 }
                 else
                 {
-                    this.Size = Screen.PrimaryScreen.Bounds.Size;
                     this.WindowState = FormWindowState.Maximized;
                 }
                 pictureBox1.Size = new Size(Form2.width, Form2.height);
-                panelForPictureBox.Padding = new Padding(0);
-                //pictureBox1.Margin = new Padding(3);
+                panelForPictureBox.Size = new Size(Form2.width, Form2.height);
+                
+                //panelForPictureBox.Padding = new Padding(0);
 
                 pictureBox1.Image = img;
                 pictureBox1.Visible = true;
@@ -143,6 +176,7 @@ namespace Scissors
 
                 MaximizeBox = true;
                 menuStrip1.Visible = true;
+
                 this.Opacity = 1;
             }
             catch(Exception ex)
@@ -159,15 +193,16 @@ namespace Scissors
                 menuStrip1.Visible = false;
                 pictureBox1.Visible = false;
                 img.Dispose();
-                panelForPictureBox.Padding = new Padding(3);
+                panelForPictureBox.Padding = new Padding(0);
                 pictureBox1.Size = new Size(584, 242);
+                panelForPictureBox.Size = new Size(584, 242);
                 this.WindowState = FormWindowState.Normal;
-                this.Size = new Size(Width = 600, Height = 325);
+                this.MinimumSize = new Size(600, 325);
+                this.Size = new Size(600, 325);
                 //panel2.Visible = true;
                 SaveButton.Visible = false;
                 CopyButton.Visible = false;
                 ScanQRButton.Visible = false;
-                //CancelButton.Visible = false;
                 CancelButton.Enabled = false;
                 PenButton.Visible = false;
                 EraserButton.Visible = false;
@@ -501,6 +536,39 @@ namespace Scissors
         private void Î‡ÒÚËÍToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EraserButton_Click(sender, e);
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_LocationChanged(object sender, EventArgs e)
+        {
+
+            Size size = SystemInformation.PrimaryMonitorSize;
+            if (this.Location.X < 0)
+            {
+                this.Location = new Point(0, this.Location.Y);
+            }
+            if (this.Location.Y < 0)
+            {
+                this.Location = new Point(this.Location.X, 0);
+            }
+            if (this.Location.X + this.Size.Width > size.Width)
+            {
+                this.Location = new Point(size.Width - this.Size.Width, this.Location.Y);
+            }
+            if (this.Location.Y + this.Size.Height > size.Height)
+            {
+                this.Location = new Point(this.Location.X, size.Height - this.Size.Height);
+            }
+            
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)

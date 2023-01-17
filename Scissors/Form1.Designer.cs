@@ -80,9 +80,9 @@
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.настроитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.EraserButton = new System.Windows.Forms.ToolStripButton();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.panelForPictureBox = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panelForPictureBox.SuspendLayout();
@@ -100,6 +100,7 @@
             this.справкаToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.menuStrip1.Size = new System.Drawing.Size(584, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
@@ -569,14 +570,19 @@
             this.EraserButton.Visible = false;
             this.EraserButton.Click += new System.EventHandler(this.EraserButton_Click);
             // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.Filter = "PNG|*.png|BMP|*.bmp|JPEG|*.jpeg";
+            // 
             // panelForPictureBox
             // 
+            this.panelForPictureBox.AutoSize = true;
             this.panelForPictureBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panelForPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelForPictureBox.Controls.Add(this.pictureBox1);
             this.panelForPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelForPictureBox.Location = new System.Drawing.Point(0, 43);
             this.panelForPictureBox.Name = "panelForPictureBox";
-            this.panelForPictureBox.Padding = new System.Windows.Forms.Padding(10);
             this.panelForPictureBox.Size = new System.Drawing.Size(584, 242);
             this.panelForPictureBox.TabIndex = 2;
             // 
@@ -584,24 +590,24 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.Window;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(564, 222);
+            this.pictureBox1.Size = new System.Drawing.Size(582, 240);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Visible = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
-            // 
-            // saveFileDialog1
-            // 
-            this.saveFileDialog1.Filter = "PNG|*.png|BMP|*.bmp|JPEG|*.jpeg";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(584, 285);
             this.Controls.Add(this.panelForPictureBox);
             this.Controls.Add(this.toolStrip1);
@@ -611,13 +617,14 @@
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(600, 325);
             this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ножницы";
+            this.LocationChanged += new System.EventHandler(this.Form1_LocationChanged);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.panelForPictureBox.ResumeLayout(false);
+            this.panelForPictureBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -652,8 +659,6 @@
         private ToolStripButton ScanQRButton;
         private ToolStripSeparator toolStripSeparator4;
         private ToolStripButton EraserButton;
-        private Panel panelForPictureBox;
-        private PictureBox pictureBox1;
         private SaveFileDialog saveFileDialog1;
         private ToolStripDropDownButton ModeButton;
         private ToolStripMenuItem прямоугольникToolStripMenuItem;
@@ -680,5 +685,7 @@
         private ToolStripButton ScanTextButton;
         private ToolStripMenuItem настраиваемоеПероToolStripMenuItem;
         private ToolStripMenuItem настраиваемыйЦветToolStripMenuItem;
+        private Panel panelForPictureBox;
+        private PictureBox pictureBox1;
     }
 }
