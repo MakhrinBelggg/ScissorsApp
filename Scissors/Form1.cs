@@ -35,11 +35,12 @@ namespace Scissors
 
         public static Bitmap img;
         public static string text;
-        private bool isLMB = false, isPen = false;
+        private bool isLMB = false, isPen = false, isMarker = false;
         private ArrayPoints arrayPoints = new ArrayPoints(2);
         private int timer = 0;
         Graphics g;
         Pen pen = new Pen(Color.Red, 3f);
+        Pen marker = new Pen(Color.FromArgb(81, Color.Yellow), 12f);
         private class ArrayPoints
         {
             private int index = 0;
@@ -198,6 +199,7 @@ namespace Scissors
                 menuStrip1.Visible = true;
 
                 this.Opacity = 1;
+
             }
             catch(Exception ex)
             {
@@ -382,26 +384,32 @@ namespace Scissors
         private void SetSize()
         {
             g = Graphics.FromImage(img);
-            pen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
-            pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
         }
         private void PenButton_Click(object sender, EventArgs e)
         {
             isPen = true;
+            isMarker = false;
             SetSize();
+            pen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
+            pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
         }
         private void EraserButton_Click(object sender, EventArgs e)
         {
-
             isPen = false;
+            isMarker = false;
+
         }
         private void MarkerButton_Click(object sender, EventArgs e)
         {
-
+            isMarker = true;
+            isPen = false;
+            SetSize();
+            marker.StartCap = System.Drawing.Drawing2D.LineCap.Square;
+            marker.EndCap = System.Drawing.Drawing2D.LineCap.Square;
         }
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (isPen)
+            if (isPen || isMarker)
             {
                 isLMB = true;
             }
@@ -409,7 +417,7 @@ namespace Scissors
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            if (isLMB && isPen)
+            if (isLMB && isPen || isLMB && isMarker)
             {
                 isLMB = false;
                 arrayPoints.ResetPoints();
@@ -558,11 +566,6 @@ namespace Scissors
             EraserButton_Click(sender, e);
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -591,6 +594,38 @@ namespace Scissors
             
         }
 
+        private void æåëòûéToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            æåëòûéToolStripMenuItem.Checked = true;
+            çåëåíûéToolStripMenuItem.Checked = false;
+            ðîçîâûéToolStripMenuItem.Checked = false;
+
+            marker = new Pen(Color.FromArgb(81, Color.Yellow), 12f);
+        }
+
+        private void çåëåíûéToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            æåëòûéToolStripMenuItem.Checked = false;
+            çåëåíûéToolStripMenuItem.Checked = true;
+            ðîçîâûéToolStripMenuItem.Checked = false;
+
+            marker = new Pen(Color.FromArgb(81, Color.LimeGreen), 12f);
+        }
+
+        private void ðîçîâûéToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            æåëòûéToolStripMenuItem.Checked = false;
+            çåëåíûéToolStripMenuItem.Checked = false;
+            ðîçîâûéToolStripMenuItem.Checked = true;
+
+            marker = new Pen(Color.FromArgb(81, Color.HotPink), 12f);
+        }
+
+        private void íàñòðîèòüToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void SettingsButton_Click(object sender, EventArgs e)
         {
 
@@ -602,8 +637,20 @@ namespace Scissors
             {
                 arrayPoints.SetPoints(e.X, e.Y);
                 if (arrayPoints.GetCountPoints() >= 2)
-                {
+                {                    
                     g.DrawLines(pen, arrayPoints.GetPoints());
+                    g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                    arrayPoints.SetPoints(e.X, e.Y);
+                }
+                pictureBox1.Refresh();
+            }
+            else if (isLMB && isMarker)
+            {
+                arrayPoints.SetPoints(e.X, e.Y);
+                if (arrayPoints.GetCountPoints() >= 2)
+                {
+                    g.DrawLines(marker, arrayPoints.GetPoints());
+                    g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
                     arrayPoints.SetPoints(e.X, e.Y);
                 }
                 pictureBox1.Refresh();
