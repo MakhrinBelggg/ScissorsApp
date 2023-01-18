@@ -264,6 +264,7 @@
             this.CreateButton.Size = new System.Drawing.Size(103, 40);
             this.CreateButton.Tag = "";
             this.CreateButton.Text = "Создать";
+            this.CreateButton.ToolTipText = "Создать фрагмент";
             this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
             // ModeButton
@@ -279,20 +280,21 @@
             this.ModeButton.Padding = new System.Windows.Forms.Padding(3, 0, 4, 0);
             this.ModeButton.Size = new System.Drawing.Size(103, 40);
             this.ModeButton.Text = "Режим";
+            this.ModeButton.ToolTipText = "Режим ножниц";
             // 
             // прямоугольникToolStripMenuItem
             // 
             this.прямоугольникToolStripMenuItem.Checked = true;
             this.прямоугольникToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.прямоугольникToolStripMenuItem.Name = "прямоугольникToolStripMenuItem";
-            this.прямоугольникToolStripMenuItem.Size = new System.Drawing.Size(172, 24);
+            this.прямоугольникToolStripMenuItem.Size = new System.Drawing.Size(188, 24);
             this.прямоугольникToolStripMenuItem.Text = "Прямоугольник";
             this.прямоугольникToolStripMenuItem.Click += new System.EventHandler(this.прямоугольникToolStripMenuItem_Click);
             // 
             // окноToolStripMenuItem
             // 
             this.окноToolStripMenuItem.Name = "окноToolStripMenuItem";
-            this.окноToolStripMenuItem.Size = new System.Drawing.Size(172, 24);
+            this.окноToolStripMenuItem.Size = new System.Drawing.Size(188, 24);
             this.окноToolStripMenuItem.Text = "Весь экран";
             this.окноToolStripMenuItem.Click += new System.EventHandler(this.окноToolStripMenuItem_Click);
             // 
@@ -312,48 +314,49 @@
             this.TimerButton.Padding = new System.Windows.Forms.Padding(3, 0, 4, 0);
             this.TimerButton.Size = new System.Drawing.Size(128, 40);
             this.TimerButton.Text = "Задержать";
+            this.TimerButton.ToolTipText = "Задержать создание фрагмента";
             // 
             // безЗадержкиToolStripMenuItem
             // 
             this.безЗадержкиToolStripMenuItem.Checked = true;
             this.безЗадержкиToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.безЗадержкиToolStripMenuItem.Name = "безЗадержкиToolStripMenuItem";
-            this.безЗадержкиToolStripMenuItem.Size = new System.Drawing.Size(159, 24);
+            this.безЗадержкиToolStripMenuItem.Size = new System.Drawing.Size(188, 24);
             this.безЗадержкиToolStripMenuItem.Text = "Без задержки";
             this.безЗадержкиToolStripMenuItem.Click += new System.EventHandler(this.безЗадержкиToolStripMenuItem_Click);
             // 
             // OneSecToolStripMenuItem
             // 
             this.OneSecToolStripMenuItem.Name = "OneSecToolStripMenuItem";
-            this.OneSecToolStripMenuItem.Size = new System.Drawing.Size(159, 24);
+            this.OneSecToolStripMenuItem.Size = new System.Drawing.Size(188, 24);
             this.OneSecToolStripMenuItem.Text = "1 секунда";
             this.OneSecToolStripMenuItem.Click += new System.EventHandler(this.OneSecToolStripMenuItem_Click_1);
             // 
             // TwoSecToolStripMenuItem
             // 
             this.TwoSecToolStripMenuItem.Name = "TwoSecToolStripMenuItem";
-            this.TwoSecToolStripMenuItem.Size = new System.Drawing.Size(159, 24);
+            this.TwoSecToolStripMenuItem.Size = new System.Drawing.Size(188, 24);
             this.TwoSecToolStripMenuItem.Text = "2 секунды";
             this.TwoSecToolStripMenuItem.Click += new System.EventHandler(this.TwoSecToolStripMenuItem_Click);
             // 
             // ThreeSecToolStripMenuItem1
             // 
             this.ThreeSecToolStripMenuItem1.Name = "ThreeSecToolStripMenuItem1";
-            this.ThreeSecToolStripMenuItem1.Size = new System.Drawing.Size(159, 24);
+            this.ThreeSecToolStripMenuItem1.Size = new System.Drawing.Size(188, 24);
             this.ThreeSecToolStripMenuItem1.Text = "3 секунды";
             this.ThreeSecToolStripMenuItem1.Click += new System.EventHandler(this.ThreeSecToolStripMenuItem1_Click);
             // 
             // FourSecToolStripMenuItem2
             // 
             this.FourSecToolStripMenuItem2.Name = "FourSecToolStripMenuItem2";
-            this.FourSecToolStripMenuItem2.Size = new System.Drawing.Size(159, 24);
+            this.FourSecToolStripMenuItem2.Size = new System.Drawing.Size(188, 24);
             this.FourSecToolStripMenuItem2.Text = "4 секунды";
             this.FourSecToolStripMenuItem2.Click += new System.EventHandler(this.FourSecToolStripMenuItem2_Click);
             // 
             // FiveSecToolStripMenuItem
             // 
             this.FiveSecToolStripMenuItem.Name = "FiveSecToolStripMenuItem";
-            this.FiveSecToolStripMenuItem.Size = new System.Drawing.Size(159, 24);
+            this.FiveSecToolStripMenuItem.Size = new System.Drawing.Size(188, 24);
             this.FiveSecToolStripMenuItem.Text = "5 секунд";
             this.FiveSecToolStripMenuItem.Click += new System.EventHandler(this.FiveSecToolStripMenuItem_Click);
             // 
@@ -367,6 +370,7 @@
             this.CancelButton.Padding = new System.Windows.Forms.Padding(3, 0, 4, 0);
             this.CancelButton.Size = new System.Drawing.Size(100, 40);
             this.CancelButton.Text = "Отмена";
+            this.CancelButton.ToolTipText = "Отменить фрагмент";
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // SettingsButton
@@ -378,6 +382,8 @@
             this.SettingsButton.Padding = new System.Windows.Forms.Padding(3, 0, 4, 0);
             this.SettingsButton.Size = new System.Drawing.Size(124, 40);
             this.SettingsButton.Text = "Параметры";
+            this.SettingsButton.ToolTipText = "Дополнительно...";
+            this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
             // 
             // SaveButton
             // 
@@ -389,6 +395,7 @@
             this.SaveButton.Padding = new System.Windows.Forms.Padding(3, 0, 4, 0);
             this.SaveButton.Size = new System.Drawing.Size(47, 40);
             this.SaveButton.Text = "Сохранить";
+            this.SaveButton.ToolTipText = "Сохранить фрагмент";
             this.SaveButton.Visible = false;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
@@ -402,6 +409,7 @@
             this.CopyButton.Padding = new System.Windows.Forms.Padding(3, 0, 4, 0);
             this.CopyButton.Size = new System.Drawing.Size(47, 40);
             this.CopyButton.Text = "Копировать";
+            this.CopyButton.ToolTipText = "Копировать фрагмент";
             this.CopyButton.Visible = false;
             this.CopyButton.Click += new System.EventHandler(this.CopyButton_Click);
             // 
@@ -456,6 +464,7 @@
             this.PenButton.Padding = new System.Windows.Forms.Padding(3, 0, 4, 0);
             this.PenButton.Size = new System.Drawing.Size(56, 40);
             this.PenButton.Text = "toolStripSplitButton3";
+            this.PenButton.ToolTipText = "Рисовать карандашом";
             this.PenButton.Visible = false;
             this.PenButton.Click += new System.EventHandler(this.PenButton_Click);
             // 
@@ -517,6 +526,7 @@
             this.MarkerButton.Padding = new System.Windows.Forms.Padding(3, 0, 4, 0);
             this.MarkerButton.Size = new System.Drawing.Size(56, 40);
             this.MarkerButton.Text = "toolStripSplitButton4";
+            this.MarkerButton.ToolTipText = "Рисовать маркером";
             this.MarkerButton.Visible = false;
             this.MarkerButton.Click += new System.EventHandler(this.MarkerButton_Click);
             // 
@@ -567,6 +577,7 @@
             this.EraserButton.Padding = new System.Windows.Forms.Padding(3, 0, 4, 0);
             this.EraserButton.Size = new System.Drawing.Size(47, 40);
             this.EraserButton.Text = "toolStripButton8";
+            this.EraserButton.ToolTipText = "Ластик";
             this.EraserButton.Visible = false;
             this.EraserButton.Click += new System.EventHandler(this.EraserButton_Click);
             // 
@@ -588,12 +599,12 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(582, 240);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Visible = false;
@@ -606,17 +617,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(584, 285);
             this.Controls.Add(this.panelForPictureBox);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(600, 325);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ножницы";
             this.LocationChanged += new System.EventHandler(this.Form1_LocationChanged);
             this.menuStrip1.ResumeLayout(false);
@@ -624,7 +636,6 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.panelForPictureBox.ResumeLayout(false);
-            this.panelForPictureBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -16,11 +16,37 @@ namespace Scissors
         {
             InitializeComponent();
             richTextBox1.Text = Form1.text;
+            richTextBox1.ReadOnly = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void CopyButton_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetDataObject(richTextBox1.Text);
+        }
+
+        private void EditTextButton_Click(object sender, EventArgs e)
+        {
+            
+            if(EditTextButton.Checked)
+            {
+                EditTextButton.Checked = false;
+                richTextBox1.ReadOnly = true;
+            }
+            else
+            {
+                EditTextButton.Checked = true
+                richTextBox1.ReadOnly = false;
+            }
         }
     }
 }

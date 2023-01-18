@@ -143,6 +143,16 @@ namespace Scissors.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_редактировать_36 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-редактировать-36", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_скопировать_36 {
             get {
                 object obj = ResourceManager.GetObject("icons8-скопировать-36", resourceCulture);

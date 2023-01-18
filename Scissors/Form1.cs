@@ -102,6 +102,7 @@ namespace Scissors
                     photoShowing.ShowDialog();                   
                 }
 
+                //auto layring images to its place on screen
                 if(Form2.start.Y < Form2.end.Y) // start point highter then end point
                 {
                     if (Form2.start.X < Form2.end.X) // start point righter then end point
@@ -125,26 +126,25 @@ namespace Scissors
                     }                
                 }
                 
-                //this.Size = new Size(Form2.width + 92, Form2.height + 160);
-                
+                //autosize form1
                 if (img.Size != Screen.PrimaryScreen.Bounds.Size)
                 {
-                    //if (Form2.width > 685)
-                    //{
-                    //    if (Form2.height > 450)
-                    //    {
-                    //        this.Size = new Size(685 + Form2.width, 450 + Form2.height);
-                    //    }
-                    //    this.Size = new Size(685 + Form2.width, 450);
-                    //}
-                    //else if (Form2.height > 450)
-                    //{
-                    //    this.Size = new Size(685, 450 + Form2.height);
-                    //}
-                    //else
-                    //{
-                    //    this.Size = new Size(685, 450);
-                    //}
+                    if (img.Width > this.Width)
+                    {
+                        if (img.Height > this.Height)
+                        {
+                            this.Size = new Size(Form2.width + 17, Form2.height + 109);
+                        }
+                        else
+                        {
+                            this.Size = new Size(Form2.width + 17, 450);
+                        }                     
+                    }
+                    else if (img.Height > this.Height)
+                    {
+                        this.Size = new Size(685, Form2.height + 109);
+                    }
+
                     //(left, up, right, down)
                     //Padding = new Padding((this.Size.Width - pictureBox1.Size.Width) / 2, (this.Size.Height - pictureBox1.Size.Height) / 2, (this.Size.Width - pictureBox1.Size.Width) / 2, (this.Size.Height - pictureBox1.Size.Height) / 2);
                     //panelForPictureBox.Padding = new Padding((panelForPictureBox.Size.Width - Form2.width) / 2, (panelForPictureBox.Size.Height - Form2.height)/2, 0, 0);
@@ -155,11 +155,31 @@ namespace Scissors
                 }
                 pictureBox1.Size = new Size(Form2.width, Form2.height);
                 panelForPictureBox.Size = new Size(Form2.width, Form2.height);
-                
-                //panelForPictureBox.Padding = new Padding(0);
 
                 pictureBox1.Image = img;
                 pictureBox1.Visible = true;
+
+                // calculating padding for image into panelForPictureBox
+                //if (pictureBox1.Size.Width < this.Size.Width)
+                //{
+                //    int paddingX = (this.Size.Width - pictureBox1.Size.Width) / 2;
+                //    if (pictureBox1.Size.Height < this.Size.Height)
+                //    {
+                //        int paddingY = (this.Size.Height - pictureBox1.Size.Height) / 2;
+                //        panelForPictureBox.Padding = new Padding(paddingX, paddingY, paddingX, paddingY);
+                //    }
+                //    else
+                //    {
+                //        panelForPictureBox.Padding = new Padding(paddingX, 0, paddingX, 0);
+                //    }
+                //}
+                //else if (pictureBox1.Size.Height < this.Size.Height)
+                //{
+                //    int paddingY = (this.Size.Height - pictureBox1.Size.Height) / 2;
+                //    panelForPictureBox.Padding = new Padding(0, paddingY, 0, paddingY);
+                //}
+                
+
 
                 SaveButton.Visible = true;
                 CopyButton.Visible = true;
@@ -569,6 +589,11 @@ namespace Scissors
                 this.Location = new Point(this.Location.X, size.Height - this.Size.Height);
             }
             
+        }
+
+        private void SettingsButton_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
