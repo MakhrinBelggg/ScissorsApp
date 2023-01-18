@@ -17,7 +17,7 @@ namespace Scissors
         public static int width;
         public static int height;
         private bool isLMB = false;
-
+        private bool choosingFragmentFromScreenMode = false;
         //public static Bitmap imag;
         public Form2()
         {
@@ -29,7 +29,9 @@ namespace Scissors
             }
             
             pictureBox1.Image = Form1.img;
-            
+            choosingFragmentFromScreenMode = true; 
+            // 1 - cut out screen fragment
+            // 0 - draw blue rectangle 
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e) // нажали
@@ -71,27 +73,61 @@ namespace Scissors
 
         private void Form2_Load(object sender, EventArgs e)
         {
-
+           
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
-            if (!isLMB) return;
-
-            Brush b = new SolidBrush(Color.FromArgb(50, 174, 225, 238));
-            Pen p = new Pen(Color.FromArgb(150, 174, 225, 238), 1.3f);
-            Rectangle rect = GetRect();
-
-            if (rect.IsEmpty || rect.Width == 0 && rect.Height == 0) return;
-            try
+            if(choosingFragmentFromScreenMode) // settings
             {
-                e.Graphics.FillRectangle(b, rect);
-                e.Graphics.DrawRectangle(p, rect);
-            }
-            catch(Exception ex)
+                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(100, 132, 132, 132)), new Rectangle(0, 0, this.Size.Width, this.Size.Height));
+
+                if (!isLMB) return;
+
+                Rectangle rect = GetRect();
+
+                if (rect.IsEmpty || rect.Width == 0 && rect.Height == 0) return;
+                try
+                {
+                    e.Graphics.DrawImage(Form1.img, 0, 0);
+                    e.Graphics.ExcludeClip(rect);
+                    e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(100, 132, 132, 132)), new Rectangle(0, 0, this.Size.Width, this.Size.Height));
+
+                    //e.Graphics.FillRectangle(b, rect);
+                    //e.Graphics.DrawRectangle(p, rect);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }           
+            else 
             {
-                MessageBox.Show(ex.Message);
+                if (!isLMB) return;
+
+                Brush b = new SolidBrush(Color.FromArgb(72, 174, 225, 238));
+                Pen p = new Pen(Color.FromArgb(150, 174, 225, 238), 1.3f);
+                Rectangle rect = GetRect();
+
+                if (rect.IsEmpty || rect.Width == 0 && rect.Height == 0) return;
+                try
+                {
+                    e.Graphics.FillRectangle(b, rect);
+                    e.Graphics.DrawRectangle(p, rect);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
+        }
+
+
+        private void pictureBox2_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = Graphics.FromImage(Form1.img);
+            g.FillRectangle(new SolidBrush(Color.FromArgb(50, 192, 192, 192)), new Rectangle(0, 0, this.Size.Width, this.Size.Height));
+            //e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(50, 192, 192, 192)), new Rectangle(0, 0, this.Size.Width, this.Size.Height));
         }
 
         private Rectangle GetRect()

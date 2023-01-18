@@ -44,7 +44,7 @@ namespace Scissors
             }
             else
             {
-                EditTextButton.Checked = true
+                EditTextButton.Checked = true;
                 richTextBox1.ReadOnly = false;
             }
         }
