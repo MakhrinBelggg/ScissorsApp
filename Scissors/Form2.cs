@@ -17,7 +17,7 @@ namespace Scissors
         public static int width;
         public static int height;
         private bool isLMB = false;
-        private bool choosingFragmentFromScreenMode = false;
+        //private bool choosingFragmentFromScreenMode = Properties.Settings.Default.choosingFragmentFromScreenMode;
         //public static Bitmap imag;
         public Form2()
         {
@@ -29,7 +29,7 @@ namespace Scissors
             }
             
             pictureBox1.Image = Form1.img;
-            choosingFragmentFromScreenMode = true; 
+            //c = true; 
             // 1 - cut out screen fragment
             // 0 - draw blue rectangle 
         }
@@ -78,7 +78,7 @@ namespace Scissors
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
-            if(choosingFragmentFromScreenMode) // settings
+            if(Properties.Settings.Default.choosingFragmentFromScreenMode) // settings
             {
                 e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(100, 132, 132, 132)), new Rectangle(0, 0, this.Size.Width, this.Size.Height));
 
@@ -92,9 +92,6 @@ namespace Scissors
                     e.Graphics.DrawImage(Form1.img, 0, 0);
                     e.Graphics.ExcludeClip(rect);
                     e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(100, 132, 132, 132)), new Rectangle(0, 0, this.Size.Width, this.Size.Height));
-
-                    //e.Graphics.FillRectangle(b, rect);
-                    //e.Graphics.DrawRectangle(p, rect);
                 }
                 catch (Exception ex)
                 {

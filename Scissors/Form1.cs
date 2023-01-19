@@ -30,9 +30,8 @@ namespace Scissors
     {
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
-
         public static Bitmap img;
         public static string text;
         private bool isLMB = false, isPen = false, isMarker = false;
@@ -82,6 +81,8 @@ namespace Scissors
             try
             {
                 this.Opacity = 0;
+                this.Visible = false;
+                
 
                 panelForPictureBox.Padding = new Padding(0);
                 pictureBox1.Size = new Size(584, 242);
@@ -92,7 +93,7 @@ namespace Scissors
                 img = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
 
                 Graphics g = Graphics.FromImage(img as Image);
-                Thread.Sleep(50);
+                Thread.Sleep(75);
                 Thread.Sleep(timer * 1000);
                 g.CopyFromScreen(0, 0, 0, 0, img.Size);
 
@@ -145,19 +146,22 @@ namespace Scissors
                     {
                         this.Size = new Size(685, Form2.height + 109);
                     }
-
+                    //pictureBox1.Size = new Size(Form2.width, Form2.height);
+                    //panelForPictureBox.Size = new Size(Form2.width, Form2.height);
                     //(left, up, right, down)
                     //Padding = new Padding((this.Size.Width - pictureBox1.Size.Width) / 2, (this.Size.Height - pictureBox1.Size.Height) / 2, (this.Size.Width - pictureBox1.Size.Width) / 2, (this.Size.Height - pictureBox1.Size.Height) / 2);
                     //panelForPictureBox.Padding = new Padding((panelForPictureBox.Size.Width - Form2.width) / 2, (panelForPictureBox.Size.Height - Form2.height)/2, 0, 0);
                 }
                 else
                 {
+                    this.Size = Screen.PrimaryScreen.Bounds.Size;
+                    //this.Location = new Point(0, 0);                                  
                     this.WindowState = FormWindowState.Maximized;
                 }
-                pictureBox1.Size = new Size(Form2.width, Form2.height);
-                panelForPictureBox.Size = new Size(Form2.width, Form2.height);
-
+                
                 pictureBox1.Image = img;
+                pictureBox1.Size = img.Size;
+                //panelForPictureBox.Size = img.Size;
                 pictureBox1.Visible = true;
 
                 // calculating padding for image into panelForPictureBox
@@ -198,8 +202,9 @@ namespace Scissors
                 MaximizeBox = true;
                 menuStrip1.Visible = true;
 
+                
+                this.Visible = true;
                 this.Opacity = 1;
-
             }
             catch(Exception ex)
             {
@@ -333,14 +338,14 @@ namespace Scissors
         }
 
         private string filePath = string.Empty;
-        private string lang = "rus+eng";
+        private string lang = Properties.Settings.Default.OCRLanguage;
 
         private void ScanTextButton_Click(object sender, EventArgs e)
         {
             try
             {
                 Cursor = Cursors.WaitCursor;
-                Tesseract tesseract = new Tesseract(@"C:\tessdata", lang, OcrEngineMode.TesseractLstmCombined);
+                Tesseract tesseract = new Tesseract(@"C:\tessdata", lang.ToLower(), OcrEngineMode.TesseractLstmCombined);
 
                 Image<Bgr, byte> emguImage = img.ToImage<Bgr, byte>();
                 tesseract.SetImage(emguImage);
@@ -623,12 +628,19 @@ namespace Scissors
 
         private void íàñòðîèòüToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+           
+        }
 
+        private void ïàðàìåòðûToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form4 settingsForm = new Form4();
+            settingsForm.ShowDialog();
         }
 
         private void SettingsButton_Click(object sender, EventArgs e)
         {
-
+            Form4 settingsForm = new Form4();
+            settingsForm.ShowDialog();
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
