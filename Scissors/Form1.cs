@@ -82,14 +82,16 @@ namespace Scissors
             {
                 this.Opacity = 0;
                 this.Visible = false;
-                
-
-                panelForPictureBox.Padding = new Padding(0);
-                pictureBox1.Size = new Size(584, 242);
-                panelForPictureBox.Size = new Size(584, 242);
-                this.MinimumSize = new Size(685, 325);
+                pictureBox1.Image = null;
                 this.Size = new Size(685, 325);
-                
+                panelForPictureBox.Size = new Size(667, 327);
+                pictureBox1.Size = new Size(669, 242);              
+                panelForPictureBox.Padding = new Padding(0);                
+                this.MinimumSize = new Size(685, 325);
+
+                label1.Visible = false;
+                panelForText.Visible = false;
+   
                 img = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
 
                 Graphics g = Graphics.FromImage(img as Image);
@@ -101,32 +103,37 @@ namespace Scissors
                 {
                     this.WindowState = FormWindowState.Normal;                  
                     Form2 photoShowing = new Form2();
-                    photoShowing.ShowDialog();                   
-                }
+                    photoShowing.ShowDialog();
 
-                //auto layring images to its place on screen
-                if(Form2.start.Y < Form2.end.Y) // start point highter then end point
-                {
-                    if (Form2.start.X < Form2.end.X) // start point righter then end point
+                    //auto layring images to its place on screen
+                    if (Form2.start.Y < Form2.end.Y) // start point highter then end point
                     {
-                        this.Location = new Point(Form2.start.X - 9, Form2.start.Y - 101);                            
+                        if (Form2.start.X < Form2.end.X) // start point righter then end point
+                        {
+                            this.Location = new Point(Form2.start.X - 9, Form2.start.Y - 101);
+                        }
+                        else
+                        {
+                            this.Location = new Point(Form2.end.X - 9, Form2.start.Y - 101);
+                        }
                     }
                     else
                     {
-                         this.Location = new Point(Form2.end.X - 9, Form2.start.Y - 101);                    
+                        if (Form2.start.X < Form2.end.X)
+                        {
+                            this.Location = new Point(Form2.start.X - 9, Form2.end.Y - 101);
+                        }
+                        else
+                        {
+                            this.Location = new Point(Form2.end.X - 9, Form2.end.Y - 101);
+                        }
                     }
                 }
-                else 
+                else
                 {
-                    if (Form2.start.X < Form2.end.X)
-                    {                       
-                         this.Location = new Point(Form2.start.X - 9, Form2.end.Y - 101);
-                    }
-                    else
-                    {
-                        this.Location = new Point(Form2.end.X - 9, Form2.end.Y - 101);                                  
-                    }                
+                    this.Location = new Point(0, 0);
                 }
+                
                 
                 //autosize form1
                 if (img.Size != Screen.PrimaryScreen.Bounds.Size)
@@ -135,16 +142,16 @@ namespace Scissors
                     {
                         if (img.Height > this.Height)
                         {
-                            this.Size = new Size(Form2.width + 17, Form2.height + 109);
+                            this.Size = new Size(Form2.width + 18, Form2.height + 110);
                         }
                         else
                         {
-                            this.Size = new Size(Form2.width + 17, 450);
+                            this.Size = new Size(Form2.width + 18, 450);
                         }                     
                     }
                     else if (img.Height > this.Height)
                     {
-                        this.Size = new Size(685, Form2.height + 109);
+                        this.Size = new Size(685, Form2.height + 110);
                     }
                     //pictureBox1.Size = new Size(Form2.width, Form2.height);
                     //panelForPictureBox.Size = new Size(Form2.width, Form2.height);
@@ -156,21 +163,22 @@ namespace Scissors
                 {
                     this.Size = Screen.PrimaryScreen.Bounds.Size;
                     //this.Location = new Point(0, 0);                                  
-                    this.WindowState = FormWindowState.Maximized;
+                    //this.WindowState = FormWindowState.Maximized;
                 }
                 
                 pictureBox1.Image = img;
-                pictureBox1.Size = img.Size;
-                //panelForPictureBox.Size = img.Size;
                 pictureBox1.Visible = true;
+                pictureBox1.Size = img.Size;
+                panelForPictureBox.Size = img.Size;                             
+                
 
                 // calculating padding for image into panelForPictureBox
                 //if (pictureBox1.Size.Width < this.Size.Width)
                 //{
-                //    int paddingX = (this.Size.Width - pictureBox1.Size.Width) / 2;
+                //    int paddingX = (panelForPictureBox.Size.Width - pictureBox1.Size.Width) / 2;
                 //    if (pictureBox1.Size.Height < this.Size.Height)
                 //    {
-                //        int paddingY = (this.Size.Height - pictureBox1.Size.Height) / 2;
+                //        int paddingY = (panelForPictureBox.Size.Height - pictureBox1.Size.Height) / 2;
                 //        panelForPictureBox.Padding = new Padding(paddingX, paddingY, paddingX, paddingY);
                 //    }
                 //    else
@@ -180,10 +188,14 @@ namespace Scissors
                 //}
                 //else if (pictureBox1.Size.Height < this.Size.Height)
                 //{
-                //    int paddingY = (this.Size.Height - pictureBox1.Size.Height) / 2;
+                //    int paddingY = (panelForPictureBox.Size.Height - pictureBox1.Size.Height) / 2;
                 //    panelForPictureBox.Padding = new Padding(0, paddingY, 0, paddingY);
                 //}
                 
+                if(Properties.Settings.Default.copyImmediatelyMode)
+                {
+                    Clipboard.SetDataObject(img);
+                }
 
 
                 SaveButton.Visible = true;
@@ -218,11 +230,12 @@ namespace Scissors
             {
                 MaximizeBox = false;
                 menuStrip1.Visible = false;
-                pictureBox1.Visible = false;
+                //pictureBox1.Visible = false;
+
                 img.Dispose();
                 panelForPictureBox.Padding = new Padding(0);
-                pictureBox1.Size = new Size(584, 242);
-                panelForPictureBox.Size = new Size(584, 242);
+                pictureBox1.Size = new Size(584, 240);
+                panelForPictureBox.Size = new Size(584, 240);
                 this.WindowState = FormWindowState.Normal;
                 this.MinimumSize = new Size(600, 325);
                 this.Size = new Size(600, 325);
@@ -238,6 +251,9 @@ namespace Scissors
                 ScanTextButton.Visible = false;
                 TimerButton.Visible = true;
                 SettingsButton.Visible = true;
+                label1.Visible = true;
+                panelForText.Visible = true;
+
             }
         }
 
@@ -337,7 +353,7 @@ namespace Scissors
             //label3.Text = text;
         }
 
-        private string filePath = string.Empty;
+        private string filePath = Application.StartupPath + @"tessdata";
         private string lang = Properties.Settings.Default.OCRLanguage;
 
         private void ScanTextButton_Click(object sender, EventArgs e)
@@ -345,7 +361,7 @@ namespace Scissors
             try
             {
                 Cursor = Cursors.WaitCursor;
-                Tesseract tesseract = new Tesseract(@"C:\tessdata", lang.ToLower(), OcrEngineMode.TesseractLstmCombined);
+                Tesseract tesseract = new Tesseract(filePath, lang.ToLower(), OcrEngineMode.TesseractLstmCombined);
 
                 Image<Bgr, byte> emguImage = img.ToImage<Bgr, byte>();
                 tesseract.SetImage(emguImage);
@@ -355,7 +371,7 @@ namespace Scissors
                 text = tesseract.GetUTF8Text();
                 if (String.IsNullOrEmpty(text) || String.IsNullOrWhiteSpace(text))
                 {
-                    MessageBox.Show("Текс не найден", "Выберите другую картинку", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Текст не найден", "Выберите другую картинку", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Cursor = Cursors.Default;
                     return;
                 }
@@ -635,6 +651,11 @@ namespace Scissors
         {
             Form4 settingsForm = new Form4();
             settingsForm.ShowDialog();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void SettingsButton_Click(object sender, EventArgs e)
