@@ -230,7 +230,7 @@ namespace Scissors
             {
                 MaximizeBox = false;
                 menuStrip1.Visible = false;
-                //pictureBox1.Visible = false;
+                pictureBox1.Visible = false;
 
                 img.Dispose();
                 panelForPictureBox.Padding = new Padding(0);
